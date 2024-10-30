@@ -430,9 +430,7 @@ class Proxy:
                 last = insts[inst.arg // 2 - 1]
                 starts_with_assert = (first.opname == 'LOAD_GLOBAL' and first.argval == 'AssertionError'
                                       or first.opname == 'LOAD_ASSERTION_ERROR')
-                if starts_with_assert and last.opname == 'RAISE_VARARGS':
-                    self.tracer.create_proxy('call_function', assert_fn, (self,), {})
-                    return True
+                
 
         return self.tracer.to_bool(self)
 
